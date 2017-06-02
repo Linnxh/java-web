@@ -27,6 +27,12 @@ import com.test.service.CourseService;
 
 @Controller
 @RequestMapping("/courses")
+
+/**
+ * 
+ * @author LXH
+ *
+ */
 public class CourseController {
 
 	private CourseService courseService;

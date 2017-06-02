@@ -10,7 +10,7 @@
 		<servlet-name>maven-web-deml</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 
-		<!--指定spring配置文件路径 默认路径为web-inf/$servlet-name$-selvent.xml -->
+	<!-- 指定spring配置文件路径 默认路径为web-inf/$servlet-name$-selvent.xml -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/configs/spring/SpringMVC-servlet.xml</param-value>
