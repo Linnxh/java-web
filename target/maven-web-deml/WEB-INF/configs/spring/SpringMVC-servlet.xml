@@ -50,7 +50,7 @@
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="resolveLazily" value="true" />
 	</bean>
-	w
+	
 	<!-- 配置ViewResolver。 可以用多个ViewResolver。 使用order属性排序。 InternalResourceViewResolver放在最后。 -->
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">

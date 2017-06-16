@@ -27,12 +27,6 @@ import com.test.service.CourseService;
 
 @Controller
 @RequestMapping("/courses")
-
-/**
- * 
- * @author LXH
- *
- */
 public class CourseController {
 
 	private CourseService courseService;
@@ -46,24 +40,16 @@ public class CourseController {
 	// /courses/view?courseId=2
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public String viewCourse(@RequestParam("courseId") Integer courseId, Model model) {
-		log.debug("in viewCourse ,courseid=" + courseId);
-		System.out.println("courseid==>" + courseId);
 		Course course = courseService.getCoursebyId(courseId);
 		model.addAttribute(course);
-		System.out.println("course==>" + course);
-		System.out.println("model===>" + model);
 		return "course_overview";
 	}
 
 	// /courses/view2/123
 	@RequestMapping(value = "/view2/{courseId}", method = RequestMethod.GET)
 	public String viewCourse2(@PathVariable("courseId") Integer courseId, Map<String, Object> model) {
-		log.debug("in viewCourse ,courseid=" + courseId);
-		System.out.println("courseid==>" + courseId);
 		Course course = courseService.getCoursebyId(courseId);
 		model.put("course", course);
-		System.out.println("course==>" + course);
-		System.out.println("model===>" + model);
 		return "course_overview";
 	}
 

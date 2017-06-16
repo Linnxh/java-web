@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.test.micromessage.dao.IMessage">
+
+	<resultMap type="com.test.micromessage.bean.Message" id="MessageResult">
+		<id column="id" jdbcType="INTEGER" property="id"></id>
+		<result column="command" jdbcType="VARCHAR" property="command" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+	</resultMap>
+
+	<!-- <select id="queryMessageList" parameterType="long" resultType="Message"> -->
+	<!-- <select id="queryMessageList" parameterType="com.test.micromessage.bean.Message" 
+		resultType="MessageResult"> select id,command,description,content from message 
+		where 1=1 使用ognl语言，可以直接使用java的方法equal，但是“&等符号需要转义 &amp&amp &quto <if test="command！=null&& 
+		!"".equal(command.trim())"> and command =?</if> #{command}mybits 语法，遇到的时候用？替代 
+		command != null && !"".equals(command.trim()) <if test="command != null and 
+		!&quot;&quot;.equals(command.trim())"> and command =#{command}</if> <if test="description 
+		!= null and !&quot;&quot;.equals(description.trim())"> and description like 
+		'%' #{description} '%'</if> </select> -->
+	<sql id="columns">ID,COMMAND,DESCRIPTION,CONTENT</sql>
+
+	<!-- resultmap相对与以上自定义的，也可不指定resultmap，指定resultType，要写入message的全路径， -->
+	<select id="queryMessageList" parameterType="java.util.Map"
+		resultMap="MessageResult">
+		select id,command,description,content from MESSAGE
+		<where>
+			<if test="command != null and !&quot;&quot;.equals(command.trim())">
+				and COMMAND=#{command}
+			</if>
+			<if
+				test="description != null and !&quot;&quot;.equals(description.trim())">
+				and DESCRIPTION like '%' #{description} '%'
+			</if>
+		</where>
+		<!-- order by ID limit #{page.dbIndex},#{page.dbNumber} -->
+	</select>
+
+	<select id="queryMessageListByPage" parameterType="java.util.Map"
+		resultMap="MessageResult">
+		select id,command,description,content from MESSAGE
+		<where>
+			<if
+				test="message.command != null and !&quot;&quot;.equals(message.command.trim())">
+				and COMMAND=#{message.command}
+			</if>
+			<if
+				test="message.description != null and !&quot;&quot;.equals(message.description.trim())">
+				and DESCRIPTION like '%' #{message.description} '%'
+			</if>
+		</where>
+		order by ID limit #{page.dbIndex},#{page.dbNumber}
+	</select>
+
+	<select id="count" parameterType="com.test.micromessage.bean.Message"
+		resultType="int">
+		select count(*) from MESSAGE
+		<where>
+			<if test="command != null and !&quot;&quot;.equals(command.trim())">
+				and COMMAND=#{command}
+			</if>
+			<if
+				test="description != null and !&quot;&quot;.equals(description.trim())">
+				and DESCRIPTION like '%' #{description} '%'
+			</if>
+		</where>
+	</select>
+
+
+	<delete id="deleteOne" parameterType="int">
+		delete from message where
+		id=#{_parameter}
+	</delete>
+
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from MESSAGE where ID in(
+		<foreach collection="list" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+</mapper>
