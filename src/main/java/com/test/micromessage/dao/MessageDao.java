@@ -21,6 +21,7 @@ import com.test.micromessage.db.DBAccess;
  */
 public class MessageDao {
 
+
 	/**
 	 * 查询操作
 	 * 
