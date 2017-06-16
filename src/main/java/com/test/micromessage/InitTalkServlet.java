@@ -18,7 +18,7 @@ public class InitTalkServlet extends HttpServlet {
 		// 设置编码
 		req.setCharacterEncoding("UTF-8");
 		// 向页面跳转
-		req.getRequestDispatcher("/WEB-INF/jsp/front/talk.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/micromess/front/talk.jsp").forward(req, resp);
 	}
 	
 	@Override

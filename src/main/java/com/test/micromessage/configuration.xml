@@ -35,6 +35,9 @@
 	<!-- 映射文件，mybatis精髓， 后面才会细讲 -->
 	<mappers>
 		<mapper resource="com/test/micromessage/bean/Message.xml" />
+		<mapper resource="com/test/micromessage/bean/Command.xml" />
+		<mapper resource="com/test/micromessage/bean/CommandContent.xml" />
 	</mappers>
+
 
 </configuration>

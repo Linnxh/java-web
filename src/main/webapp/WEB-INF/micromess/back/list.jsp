@@ -19,10 +19,11 @@
 <script src="<%=basePath%>resources/js/list.js"></script>
 </head>
 <body style="background: #e1e9eb;">
-	<form action="<%=basePath%>List.action"
-		id="mainForm" method="post">
+	<form action="<%=basePath%>List.action" id="mainForm" method="post">
+		<!-- 翻页时候，传入的 currentPage不能再list.action后直接拼接-->
 		<input type="hidden" name="currentPage" id="currentPage"
 			value="${page.currentPage}" />
+
 
 		<div class="right">
 			<div class="current">

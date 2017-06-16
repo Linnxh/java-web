@@ -40,7 +40,7 @@
 		<servlet-name>DeleteBatchServlet</servlet-name>
 		<url-pattern>/DeleteBatchServlet.action</url-pattern>
 	</servlet-mapping>
-
+	<!-- http://localhost:8080/web-demo/InitTalkServlet.action 实现自动回复功能 -->
 	<servlet>
 		<servlet-name>InitTalkServlet</servlet-name>
 		<servlet-class>com.test.micromessage.InitTalkServlet</servlet-class>
@@ -48,6 +48,16 @@
 	<servlet-mapping>
 		<servlet-name>InitTalkServlet</servlet-name>
 		<url-pattern>/InitTalkServlet.action</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>AutoReplyServlet</servlet-name>
+		<servlet-class>com.test.micromessage.AutoReplyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AutoReplyServlet</servlet-name>
+		<url-pattern>/AutoReplyServlet.action</url-pattern>
 	</servlet-mapping>
 
 
